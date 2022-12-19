@@ -9,8 +9,13 @@ package schoolhelp;
  * @author risak
  */
 public class SchoolHELPGUI {
+    
+    public static SchoolHELP schoolHELP = new SchoolHELP();
+    
     public static void main(String[] args) {
-         MainMenu mainMenu = new MainMenu();
-         mainMenu.setVisible(true);
+        schoolHELP.init();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        
     }
 }

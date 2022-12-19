@@ -4,6 +4,8 @@
  */
 package schoolhelp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -162,6 +164,30 @@ public class RegisterSchool extends javax.swing.JFrame {
 
     private void btnRegisterSchoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterSchoolActionPerformed
         // TODO add your handling code here:
+        String schoolName = tfSchoolName.getText().trim();
+        String schoolAddress = tfSchoolAddress.getText().trim();
+        String city = tfCity.getText().trim();
+        if (schoolName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "School Name must not empty");
+        }
+        else if (schoolAddress.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "School Address must not empty");
+        }
+        else if (city.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "City must not empty");
+        }
+        else {
+            School school = new School();
+            school.setSchoolName(schoolName);
+            school.setAddress(schoolAddress);
+            school.setCity(city);
+            
+            RegisterSchoolAdmin registerSchoolAdmin = new RegisterSchoolAdmin(school);
+            registerSchoolAdmin.setVisible(true);
+            if(!registerSchoolAdmin.isActive()){
+                dispose();
+            }
+        }
     }//GEN-LAST:event_btnRegisterSchoolActionPerformed
 
     /**

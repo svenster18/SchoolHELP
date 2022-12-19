@@ -4,6 +4,8 @@
  */
 package schoolhelp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -58,6 +60,11 @@ public class Login extends javax.swing.JFrame {
         btnloginSchool.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnloginSchool.setForeground(new java.awt.Color(255, 255, 255));
         btnloginSchool.setText("Login");
+        btnloginSchool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginSchoolActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,6 +130,24 @@ public class Login extends javax.swing.JFrame {
     private void tfUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfUsernameActionPerformed
+
+    private void btnloginSchoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginSchoolActionPerformed
+        // TODO add your handling code here:
+        User user = SchoolHELPGUI.schoolHELP.login(tfUsername.getText().trim(), String.valueOf(pfPassword.getPassword()).trim());
+        if(user != null) {
+            if(user instanceof SchoolAdmin) {
+                JOptionPane.showMessageDialog(null, "Login as School Admin");
+            }
+            else {
+                RegisterSchool registerSchool = new RegisterSchool();
+                registerSchool.setVisible(true);
+                dispose();
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Wrong Username/Password");
+        }
+    }//GEN-LAST:event_btnloginSchoolActionPerformed
 
     /**
      * @param args the command line arguments

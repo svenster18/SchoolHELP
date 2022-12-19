@@ -13,6 +13,8 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * Creates new form MainMenu
      */
+    
+    
     public MainMenu() {
         initComponents();
     }
@@ -156,6 +158,9 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Login login = new Login();
         login.setVisible(true);
+        if(!login.isActive()){
+            dispose();
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

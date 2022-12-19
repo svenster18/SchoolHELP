@@ -4,17 +4,23 @@
  */
 package schoolhelp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
  */
 public class RegisterSchoolAdmin extends javax.swing.JFrame {
+    
+    private static School school;
 
     /**
      * Creates new form RegisterSchoolAdmin
+     * @param school
      */
-    public RegisterSchoolAdmin() {
+    public RegisterSchoolAdmin(School school) {
         initComponents();
+        this.school = school;
     }
 
     /**
@@ -90,6 +96,11 @@ public class RegisterSchoolAdmin extends javax.swing.JFrame {
         btnRegisterSchoolAdminSchoolAdmin.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnRegisterSchoolAdminSchoolAdmin.setForeground(new java.awt.Color(255, 255, 255));
         btnRegisterSchoolAdminSchoolAdmin.setText("Register");
+        btnRegisterSchoolAdminSchoolAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterSchoolAdminSchoolAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,11 +114,9 @@ public class RegisterSchoolAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                    .addComponent(btnRegisterSchoolAdminSchoolAdmin)
-                                    .addComponent(tfPositionSchoolAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(6, 6, 6))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(btnRegisterSchoolAdminSchoolAdmin)
+                                .addComponent(tfPositionSchoolAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2)
                             .addComponent(tfStaffidSchoolAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
@@ -122,7 +131,7 @@ public class RegisterSchoolAdmin extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(tfUsernameSchoolAdmin)
                                 .addComponent(pfPasswordSchoolAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)))
                 .addGap(230, 230, 230))
         );
         layout.setVerticalGroup(
@@ -175,6 +184,54 @@ public class RegisterSchoolAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pfPasswordSchoolAdminActionPerformed
 
+    private void btnRegisterSchoolAdminSchoolAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterSchoolAdminSchoolAdminActionPerformed
+        // TODO add your handling code here:
+        String username = tfUsernameSchoolAdmin.getText().trim();
+        String password = String.valueOf(pfPasswordSchoolAdmin.getPassword()).trim();
+        String fullname = tfFullnameSchoolAdmin.getText().trim();
+        String email = tfEmailSchoolAdmin.getText().trim();
+        String phone = tfPhoneSchoolAdmin.getText().trim();
+        String staffId = tfStaffidSchoolAdmin.getText().trim();
+        String position = tfPositionSchoolAdmin.getText().trim();
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username must not empty");
+        }
+        else if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Password must not empty");
+        }
+        else if (fullname.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fullname must not empty");
+        }
+        else if (email.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Email must not empty");
+        }
+        else if (phone.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Phone must not empty");
+        }
+        else if (staffId.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Staff ID must not empty");
+        }
+        else if (position.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Position must not empty");
+        }
+        else {
+            SchoolAdmin schoolAdmin = new SchoolAdmin();
+            schoolAdmin.setUsername(username);
+            schoolAdmin.setPassword(password);
+            schoolAdmin.setFullname(fullname);
+            schoolAdmin.setEmail(email);
+            schoolAdmin.setPhone(phone);
+            schoolAdmin.setStaffID(staffId);
+            
+            SchoolHELPGUI.schoolHELP.registerSchool(school, schoolAdmin);
+            JOptionPane.showMessageDialog(null, "Register Success");
+            
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_btnRegisterSchoolAdminSchoolAdminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,7 +262,7 @@ public class RegisterSchoolAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterSchoolAdmin().setVisible(true);
+                new RegisterSchoolAdmin(school).setVisible(true);
             }
         });
     }
