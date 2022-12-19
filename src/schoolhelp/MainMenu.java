@@ -66,6 +66,11 @@ public class MainMenu extends javax.swing.JFrame {
         btnLogin.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("SELECT");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         btnRAVolunteer.setBackground(new java.awt.Color(53, 94, 94));
         btnRAVolunteer.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
@@ -146,6 +151,12 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnRAVolunteerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAVolunteerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRAVolunteerActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
