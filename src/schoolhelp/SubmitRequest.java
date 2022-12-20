@@ -105,6 +105,8 @@ public class SubmitRequest extends javax.swing.JFrame {
 
     private void btnTutorialRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutorialRequestActionPerformed
         // TODO add your handling code here:
+        MenuTutorialRequest menuTutorialRequest = new MenuTutorialRequest();
+        menuTutorialRequest.setVisible(true);
     }//GEN-LAST:event_btnTutorialRequestActionPerformed
 
     /**

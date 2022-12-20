@@ -198,6 +198,8 @@ public class MenuSchoolAdministrator extends javax.swing.JFrame {
 
     private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
         // TODO add your handling code here:
+        SubmitRequest submitRequest = new SubmitRequest();
+        submitRequest.setVisible(true);
     }//GEN-LAST:event_btnSubmitRequestActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
