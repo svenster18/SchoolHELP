@@ -138,13 +138,12 @@ public class Login extends javax.swing.JFrame {
             if(user instanceof SchoolAdmin) {
                 MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
                 menuSchoolAdministrator.setVisible(true);
-                dispose();
             }
             else {
                 RegisterSchool registerSchool = new RegisterSchool();
                 registerSchool.setVisible(true);
-                dispose();
             }
+            dispose();
         }
         else {
             JOptionPane.showMessageDialog(null, "Wrong Username/Password");
