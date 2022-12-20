@@ -108,12 +108,12 @@ public class ChangePassword extends javax.swing.JFrame {
 
     private void btnConfirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmPasswordActionPerformed
         // TODO add your handling code here:
-        String password = String.valueOf(tfNewPassword.getPassword()).trim();
+        String password = String.valueOf(pfNewPassword.getPassword()).trim();
         if (password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Password must not empty");
         }
         else {
-            SchoolHELPGUI.schoolHELP.changePassword(SchoolHELPGUI.loggedInUser, password);
+            SchoolHELPGUI.schoolHELP.changePassword(SchoolHELPGUI.loggedInAdmin, password);
             JOptionPane.showMessageDialog(null, "Change Password Success");
             dispose();
         }

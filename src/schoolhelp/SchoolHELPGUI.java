@@ -11,7 +11,7 @@ package schoolhelp;
 public class SchoolHELPGUI {
     
     public static SchoolHELP schoolHELP = new SchoolHELP();
-    public static User loggedInUser = null;
+    public static SchoolAdmin loggedInAdmin = null;
     
     public static void main(String[] args) {
         schoolHELP.init();

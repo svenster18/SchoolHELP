@@ -15,6 +15,15 @@ public class MenuSchoolAdministrator extends javax.swing.JFrame {
      */
     public MenuSchoolAdministrator() {
         initComponents();
+        initUI();
+    }
+    
+    private void initUI() {
+        SchoolAdmin schoolAdmin = SchoolHELPGUI.loggedInAdmin;
+        jLabel1.setText(schoolAdmin.getFullname());
+        jLabel3.setText(schoolAdmin.getPosition());
+        jLabel4.setText(String.valueOf(schoolAdmin.getSchool().getSchoolID()));
+        jLabel5.setText(schoolAdmin.getSchool().getSchoolName());
     }
 
     /**
@@ -194,7 +203,7 @@ public class MenuSchoolAdministrator extends javax.swing.JFrame {
 
     private void btnLogoutAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutAccountActionPerformed
         // TODO add your handling code here:
-        SchoolHELPGUI.loggedInUser = null;
+        SchoolHELPGUI.loggedInAdmin = null;
         MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
         dispose();
