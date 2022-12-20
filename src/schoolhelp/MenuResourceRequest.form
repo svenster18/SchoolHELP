@@ -52,13 +52,13 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbRRResourceType" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="taDescription" alignment="1" min="-2" pref="503" max="-2" attributes="0"/>
+                              <Component id="taRRDescription" alignment="1" min="-2" pref="503" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel8" min="-2" pref="338" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                  <Component id="spnNES" max="32767" attributes="0"/>
+                                  <Component id="spnNumberRequired" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="411" max="-2" attributes="0"/>
@@ -79,15 +79,15 @@
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="taDescription" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="taRRDescription" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbRRResourceType" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="spnNES" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnNumberRequired" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
@@ -118,7 +118,7 @@
             <Property name="text" type="java.lang.String" value="Resource Type                                  :"/>
           </Properties>
         </Component>
-        <Component class="java.awt.TextArea" name="taDescription">
+        <Component class="java.awt.TextArea" name="taRRDescription">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -129,7 +129,7 @@
             <Property name="text" type="java.lang.String" value="Description"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="cbRRResourceType">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -141,7 +141,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbRRResourceTypeActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -156,7 +156,7 @@
             <Property name="text" type="java.lang.String" value="Number Required                             :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spnNES">
+        <Component class="javax.swing.JSpinner" name="spnNumberRequired">
         </Component>
         <Component class="javax.swing.JButton" name="btnSubmitTutorialRequest">
           <Properties>
