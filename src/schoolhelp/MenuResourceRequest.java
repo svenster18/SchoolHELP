@@ -35,6 +35,7 @@ public class MenuResourceRequest extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         spnNumberRequired = new javax.swing.JSpinner();
         btnSubmitTutorialRequest = new javax.swing.JButton();
+        btnAnotherResourceRequest1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +72,16 @@ public class MenuResourceRequest extends javax.swing.JFrame {
             }
         });
 
+        btnAnotherResourceRequest1.setBackground(new java.awt.Color(53, 94, 94));
+        btnAnotherResourceRequest1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        btnAnotherResourceRequest1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAnotherResourceRequest1.setText("View Another Request");
+        btnAnotherResourceRequest1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnotherResourceRequest1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,6 +109,10 @@ public class MenuResourceRequest extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSubmitTutorialRequest)
                         .addGap(612, 612, 612))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAnotherResourceRequest1)
+                .addGap(536, 536, 536))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +133,9 @@ public class MenuResourceRequest extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(58, 58, 58)
                 .addComponent(btnSubmitTutorialRequest)
-                .addGap(269, 269, 269))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAnotherResourceRequest1)
+                .addGap(224, 224, 224))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,6 +159,10 @@ public class MenuResourceRequest extends javax.swing.JFrame {
     private void btnSubmitTutorialRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitTutorialRequestActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSubmitTutorialRequestActionPerformed
+
+    private void btnAnotherResourceRequest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnotherResourceRequest1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnotherResourceRequest1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +200,7 @@ public class MenuResourceRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnotherResourceRequest1;
     private javax.swing.JButton btnSubmitTutorialRequest;
     private javax.swing.JComboBox<String> cbRRResourceType;
     private javax.swing.JLabel jLabel2;
