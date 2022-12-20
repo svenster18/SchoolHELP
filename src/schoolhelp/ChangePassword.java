@@ -31,7 +31,7 @@ public class ChangePassword extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tfNewPassword = new javax.swing.JPasswordField();
+        pfNewPassword = new javax.swing.JPasswordField();
         btnConfirmPassword = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,9 +44,9 @@ public class ChangePassword extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("New Password");
 
-        tfNewPassword.addActionListener(new java.awt.event.ActionListener() {
+        pfNewPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNewPasswordActionPerformed(evt);
+                pfNewPasswordActionPerformed(evt);
             }
         });
 
@@ -69,7 +69,7 @@ public class ChangePassword extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addComponent(btnConfirmPassword)
-                        .addComponent(tfNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pfNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2))
                     .addComponent(jLabel3))
                 .addContainerGap(458, Short.MAX_VALUE))
@@ -82,7 +82,7 @@ public class ChangePassword extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pfNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(btnConfirmPassword)
                 .addContainerGap(412, Short.MAX_VALUE))
@@ -102,9 +102,9 @@ public class ChangePassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfNewPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNewPasswordActionPerformed
+    private void pfNewPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfNewPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfNewPasswordActionPerformed
+    }//GEN-LAST:event_pfNewPasswordActionPerformed
 
     private void btnConfirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmPasswordActionPerformed
         // TODO add your handling code here:
@@ -159,6 +159,6 @@ public class ChangePassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField tfNewPassword;
+    private javax.swing.JPasswordField pfNewPassword;
     // End of variables declaration//GEN-END:variables
 }
