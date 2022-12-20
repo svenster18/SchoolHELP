@@ -28,8 +28,8 @@ public class SubmitRequest extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnChangePassword = new javax.swing.JButton();
-        btnChangePassword1 = new javax.swing.JButton();
+        btnResourceRequest = new javax.swing.JButton();
+        btnTutorialRequest = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,23 +37,23 @@ public class SubmitRequest extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(53, 94, 94));
         jLabel2.setText("Submit Request");
 
-        btnChangePassword.setBackground(new java.awt.Color(53, 94, 94));
-        btnChangePassword.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        btnChangePassword.setForeground(new java.awt.Color(255, 255, 255));
-        btnChangePassword.setText("Resource Request");
-        btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
+        btnResourceRequest.setBackground(new java.awt.Color(53, 94, 94));
+        btnResourceRequest.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        btnResourceRequest.setForeground(new java.awt.Color(255, 255, 255));
+        btnResourceRequest.setText("Resource Request");
+        btnResourceRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangePasswordActionPerformed(evt);
+                btnResourceRequestActionPerformed(evt);
             }
         });
 
-        btnChangePassword1.setBackground(new java.awt.Color(53, 94, 94));
-        btnChangePassword1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        btnChangePassword1.setForeground(new java.awt.Color(255, 255, 255));
-        btnChangePassword1.setText("Tutorial Request");
-        btnChangePassword1.addActionListener(new java.awt.event.ActionListener() {
+        btnTutorialRequest.setBackground(new java.awt.Color(53, 94, 94));
+        btnTutorialRequest.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        btnTutorialRequest.setForeground(new java.awt.Color(255, 255, 255));
+        btnTutorialRequest.setText("Tutorial Request");
+        btnTutorialRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangePassword1ActionPerformed(evt);
+                btnTutorialRequestActionPerformed(evt);
             }
         });
 
@@ -68,9 +68,9 @@ public class SubmitRequest extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(490, 490, 490))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnChangePassword1)
+                        .addComponent(btnTutorialRequest)
                         .addGap(285, 285, 285)
-                        .addComponent(btnChangePassword)
+                        .addComponent(btnResourceRequest)
                         .addGap(315, 315, 315))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -80,8 +80,8 @@ public class SubmitRequest extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(137, 137, 137)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnChangePassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTutorialRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResourceRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(336, 336, 336))
         );
 
@@ -99,13 +99,13 @@ public class SubmitRequest extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
+    private void btnResourceRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResourceRequestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnChangePasswordActionPerformed
+    }//GEN-LAST:event_btnResourceRequestActionPerformed
 
-    private void btnChangePassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePassword1ActionPerformed
+    private void btnTutorialRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTutorialRequestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnChangePassword1ActionPerformed
+    }//GEN-LAST:event_btnTutorialRequestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,8 +143,8 @@ public class SubmitRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChangePassword;
-    private javax.swing.JButton btnChangePassword1;
+    private javax.swing.JButton btnResourceRequest;
+    private javax.swing.JButton btnTutorialRequest;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
