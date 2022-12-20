@@ -136,7 +136,9 @@ public class Login extends javax.swing.JFrame {
         User user = SchoolHELPGUI.schoolHELP.login(tfUsername.getText().trim(), String.valueOf(pfPassword.getPassword()).trim());
         if(user != null) {
             if(user instanceof SchoolAdmin) {
-                JOptionPane.showMessageDialog(null, "Login as School Admin");
+                MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
+                menuSchoolAdministrator.setVisible(true);
+                dispose();
             }
             else {
                 RegisterSchool registerSchool = new RegisterSchool();
