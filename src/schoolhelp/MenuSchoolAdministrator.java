@@ -191,6 +191,9 @@ public class MenuSchoolAdministrator extends javax.swing.JFrame {
 
     private void btnUpdateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAccountActionPerformed
         // TODO add your handling code here:
+        UpdateAccount updateAccount = new UpdateAccount();
+        updateAccount.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnUpdateAccountActionPerformed
 
     private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed

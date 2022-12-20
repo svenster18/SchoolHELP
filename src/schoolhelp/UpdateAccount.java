@@ -4,6 +4,8 @@
  */
 package schoolhelp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -15,6 +17,16 @@ public class UpdateAccount extends javax.swing.JFrame {
      */
     public UpdateAccount() {
         initComponents();
+        initUI();
+    }
+    
+    private void initUI(){
+        SchoolAdmin schoolAdmin = SchoolHELPGUI.loggedInAdmin;
+        tfFullnameAC.setText(schoolAdmin.getFullname());
+        tfEmailAC.setText(schoolAdmin.getEmail());
+        tfPhoneAC.setText(schoolAdmin.getPhone());
+        tfStaffIDAC.setText(schoolAdmin.getStaffID());
+        tfPositionAC.setText(schoolAdmin.getPosition());
     }
 
     /**
@@ -49,6 +61,12 @@ public class UpdateAccount extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(53, 94, 94));
         jLabel2.setText("Update Account");
+
+        tfFullnameAC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfFullnameACActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -168,11 +186,50 @@ public class UpdateAccount extends javax.swing.JFrame {
 
     private void btnUpdateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAccountActionPerformed
         // TODO add your handling code here:
+        String fullname = tfFullnameAC.getText().trim();
+        String email = tfEmailAC.getText().trim();
+        String phone = tfPhoneAC.getText().trim();
+        String staffId = tfStaffIDAC.getText().trim();
+        String position = tfPositionAC.getText().trim();
+        if (fullname.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fullname must not empty");
+        }
+        else if (email.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Email must not empty");
+        }
+        else if (phone.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Phone must not empty");
+        }
+        else if (staffId.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Staff ID must not empty");
+        }
+        else if (position.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Position must not empty");
+        }
+        else {
+            SchoolAdmin schoolAdmin = SchoolHELPGUI.loggedInAdmin;
+            schoolAdmin.setFullname(fullname);
+            schoolAdmin.setEmail(email);
+            schoolAdmin.setPhone(phone);
+            schoolAdmin.setStaffID(staffId);
+            schoolAdmin.setPosition(position);
+            
+            SchoolHELPGUI.schoolHELP.updateProfile(schoolAdmin);
+            SchoolHELPGUI.loggedInAdmin = schoolAdmin;
+            JOptionPane.showMessageDialog(null, "Update Success");
+            MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
+            menuSchoolAdministrator.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_btnUpdateAccountActionPerformed
 
     private void tfPositionACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPositionACActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPositionACActionPerformed
+
+    private void tfFullnameACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfFullnameACActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfFullnameACActionPerformed
 
     /**
      * @param args the command line arguments
