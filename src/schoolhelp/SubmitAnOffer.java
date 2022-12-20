@@ -99,22 +99,7 @@ public class SubmitAnOffer extends javax.swing.JFrame {
 
     private void btnSubmitAnOfferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitAnOfferActionPerformed
         // TODO add your handling code here:
-        User user = SchoolHELPGUI.schoolHELP.login(tfUsername.getText().trim(), String.valueOf(pfPassword.getPassword()).trim());
-        if(user != null) {
-            if(user instanceof SchoolAdmin) {
-                SchoolHELPGUI.loggedInAdmin = (SchoolAdmin) user;
-                MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
-                menuSchoolAdministrator.setVisible(true);
-            }
-            else {
-                RegisterSchool registerSchool = new RegisterSchool();
-                registerSchool.setVisible(true);
-            }
-            dispose();
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Wrong Username/Password");
-        }
+       
     }//GEN-LAST:event_btnSubmitAnOfferActionPerformed
 
     /**
