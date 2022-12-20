@@ -8,12 +8,12 @@ package schoolhelp;
  *
  * @author risak
  */
-public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
+public class ViewAnotherResourceRequest extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewAnotherTutorialRequest
+     * Creates new form ViewAnotherResourceRequest
      */
-    public ViewAnotherTutorialRequest() {
+    public ViewAnotherResourceRequest() {
         initComponents();
     }
 
@@ -27,134 +27,113 @@ public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btnSubmitOfferVRR = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        btnSubmitOfferVTR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(53, 94, 94));
+        jLabel2.setText("View Resource Request");
+
         jLabel3.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Description                                           :");
+        jLabel3.setText("Description                 :");
 
         jLabel5.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Purposed Date and Time                    :");
+        jLabel5.setText("Resource Type           :");
 
         jLabel7.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Student Level                                       :");
+        jLabel7.setText("Number Required       :");
 
-        jLabel8.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setText("Number of Expected Student            :");
-
-        jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(53, 94, 94));
-        jLabel2.setText("View Tutorial Request");
-
-        jLabel1.setText("Need help for teaching Mathematics");
-
-        jLabel4.setText("12/20/22 2:57 PM");
-
-        jLabel9.setText("6th Grade");
-
-        jLabel10.setText("30");
-
-        btnSubmitOfferVTR.setBackground(new java.awt.Color(53, 94, 94));
-        btnSubmitOfferVTR.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        btnSubmitOfferVTR.setForeground(new java.awt.Color(255, 255, 255));
-        btnSubmitOfferVTR.setText("Submit Offer");
-        btnSubmitOfferVTR.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmitOfferVRR.setBackground(new java.awt.Color(53, 94, 94));
+        btnSubmitOfferVRR.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        btnSubmitOfferVRR.setForeground(new java.awt.Color(255, 255, 255));
+        btnSubmitOfferVRR.setText("Submit Offer");
+        btnSubmitOfferVRR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitOfferVTRActionPerformed(evt);
+                btnSubmitOfferVRRActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Need help personal computer for Exam ");
+
+        jLabel4.setText("Personal Computer");
+
+        jLabel9.setText("30");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(349, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnSubmitOfferVTR)
-                        .addGap(641, 641, 641))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(442, 442, 442)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(394, 394, 394)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9))
-                        .addGap(368, 368, 368))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(441, 441, 441)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel4))))
+                .addContainerGap(414, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSubmitOfferVRR)
+                .addGap(600, 600, 600))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addGap(10, 10, 10)
+                .addGap(75, 75, 75)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10)))
-                .addGap(76, 76, 76)
-                .addComponent(btnSubmitOfferVTR)
-                .addGap(279, 279, 279))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)))
+                    .addComponent(jLabel1))
+                .addGap(106, 106, 106)
+                .addComponent(btnSubmitOfferVRR)
+                .addGap(298, 298, 298))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSubmitOfferVTRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitOfferVTRActionPerformed
+    private void btnSubmitOfferVRRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitOfferVRRActionPerformed
         // TODO add your handling code here:
         User user = SchoolHELPGUI.schoolHELP.login(tfUsername.getText().trim(), String.valueOf(pfPassword.getPassword()).trim());
         if(user != null) {
@@ -172,7 +151,7 @@ public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
         else {
             JOptionPane.showMessageDialog(null, "Wrong Username/Password");
         }
-    }//GEN-LAST:event_btnSubmitOfferVTRActionPerformed
+    }//GEN-LAST:event_btnSubmitOfferVRRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,34 +170,32 @@ public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewAnotherTutorialRequest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAnotherResourceRequest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewAnotherTutorialRequest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAnotherResourceRequest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewAnotherTutorialRequest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAnotherResourceRequest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewAnotherTutorialRequest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewAnotherResourceRequest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewAnotherTutorialRequest().setVisible(true);
+                new ViewAnotherResourceRequest().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSubmitOfferVTR;
+    private javax.swing.JButton btnSubmitOfferVRR;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
