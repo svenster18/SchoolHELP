@@ -13,6 +13,7 @@ public class SchoolHELP {
 
     private final LinkedList<School> schools = new LinkedList<>();
     private final LinkedList<User> users = new LinkedList<>();
+    private int id = 0;
 
     public void init() {
         User schoolHELPAdmin = new User();
@@ -22,6 +23,20 @@ public class SchoolHELP {
         schoolHELPAdmin.setEmail("cliff@email.com");
         schoolHELPAdmin.setPhone("012718273");
         users.add(schoolHELPAdmin);
+        School school = new School();
+        school.setSchoolName("SMAN 1 Rancaekek");
+        school.setAddress("Jl. Walini");
+        school.setCity("Bandung");
+        
+        SchoolAdmin schoolAdmin = new SchoolAdmin();
+        schoolAdmin.setUsername("rizki");
+        schoolAdmin.setPassword("r12k14n4k50l3h");
+        schoolAdmin.setFullname("Mohamad Rizki");
+        schoolAdmin.setEmail("mohamadrizki8@gmail.com");
+        schoolAdmin.setPhone("081316560190");
+        schoolAdmin.setStaffID("3204281806000002");
+        schoolAdmin.setPosition("IT Admin");
+        registerSchool(school, schoolAdmin);
     }
 
     public User login(String username, String password) {
@@ -47,6 +62,8 @@ public class SchoolHELP {
     }
 
     public void registerSchool(School school, SchoolAdmin schoolAdmin) {
+        id++;
+        school.setSchoolID(id);
         schoolAdmin.setSchool(school);
         try {
             this.schools.stream().filter(s -> s.getSchoolName().equals(school.getSchoolName())).findFirst().get().getSchoolAdmins().add(schoolAdmin);
