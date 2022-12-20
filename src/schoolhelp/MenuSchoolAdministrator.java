@@ -162,6 +162,9 @@ public class MenuSchoolAdministrator extends javax.swing.JFrame {
 
     private void btnLogoutAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutAccountActionPerformed
         // TODO add your handling code here:
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnLogoutAccountActionPerformed
 
     /**
