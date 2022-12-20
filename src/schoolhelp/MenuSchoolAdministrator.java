@@ -146,6 +146,8 @@ public class MenuSchoolAdministrator extends javax.swing.JFrame {
 
     private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
         // TODO add your handling code here:
+        ChangePassword changePassword = new ChangePassword();
+        changePassword.setVisible(true);
     }//GEN-LAST:event_btnChangePasswordActionPerformed
 
     private void btnUpdateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateAccountActionPerformed
@@ -162,6 +164,7 @@ public class MenuSchoolAdministrator extends javax.swing.JFrame {
 
     private void btnLogoutAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutAccountActionPerformed
         // TODO add your handling code here:
+        SchoolHELPGUI.loggedInUser = null;
         MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
         dispose();
