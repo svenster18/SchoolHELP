@@ -4,6 +4,8 @@
  */
 package schoolhelp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -13,8 +15,19 @@ public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
     /**
      * Creates new form ViewAnotherTutorialRequest
      */
-    public ViewAnotherTutorialRequest() {
+    private static TutorialRequest tutorialRequest;
+    
+    public ViewAnotherTutorialRequest(TutorialRequest tutorialRequest) {
         initComponents();
+        this.tutorialRequest = tutorialRequest;
+        init();
+    }
+    
+    private void init() {
+        jLabel1.setText(tutorialRequest.getDescription());
+        jLabel4.setText(tutorialRequest.getProposedDate() + ", " + tutorialRequest.getProposedTime());
+        jLabel9.setText(tutorialRequest.getStudentLevel());
+        jLabel10.setText(String.valueOf(tutorialRequest.getNumStudents()));
     }
 
     /**
@@ -38,7 +51,7 @@ public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         btnSubmitOfferVTR = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -156,7 +169,8 @@ public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
 
     private void btnSubmitOfferVTRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitOfferVTRActionPerformed
         // TODO add your handling code here:
-        
+        JOptionPane.showInputDialog("Remarks");
+        dispose();
     }//GEN-LAST:event_btnSubmitOfferVTRActionPerformed
 
     /**
@@ -189,7 +203,7 @@ public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewAnotherTutorialRequest().setVisible(true);
+                new ViewAnotherTutorialRequest(tutorialRequest).setVisible(true);
             }
         });
     }

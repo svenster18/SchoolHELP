@@ -92,6 +92,11 @@ public class MainMenu extends javax.swing.JFrame {
         btnViewRequest.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnViewRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnViewRequest.setText("SELECT");
+        btnViewRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewRequestActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(53, 94, 94));
@@ -149,8 +154,7 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addGap(119, 119, 119)
                                 .addComponent(jLabel8)
                                 .addGap(65, 65, 65)
-                                .addComponent(jLabel7)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel7))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(256, 256, 256)
                                 .addComponent(btnRAVolunteer)
@@ -211,20 +215,25 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnRAVolunteerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAVolunteerActionPerformed
         // TODO add your handling code here:
+        RegisterAsVolunteer registerAsVolunteer = new RegisterAsVolunteer("", "");
+        registerAsVolunteer.setVisible(true);
     }//GEN-LAST:event_btnRAVolunteerActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        Login login = new Login();
+        Login login = new Login(false);
         login.setVisible(true);
-        if(!login.isActive()){
-            dispose();
-        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnViewAllRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllRequestActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnViewAllRequestActionPerformed
+
+    private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
+        // TODO add your handling code here:
+        ViewRequest viewRequest = new ViewRequest();
+        viewRequest.setVisible(true);
+    }//GEN-LAST:event_btnViewRequestActionPerformed
 
     /**
      * @param args the command line arguments

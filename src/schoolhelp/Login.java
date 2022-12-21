@@ -15,8 +15,12 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login() {
+    
+    private static boolean loginVolunteer;
+    
+    public Login(boolean loginVolunteer) {
         initComponents();
+        this.loginVolunteer = loginVolunteer;
     }
 
     /**
@@ -149,12 +153,17 @@ public class Login extends javax.swing.JFrame {
 
     private void btnloginSchoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginSchoolActionPerformed
         // TODO add your handling code here:
-        User user = SchoolHELPGUI.schoolHELP.login(tfUsername.getText().trim(), String.valueOf(pfPassword.getPassword()).trim());
+        String username = tfUsername.getText().trim();
+        String password = String.valueOf(pfPassword.getPassword()).trim();
+        User user = SchoolHELPGUI.schoolHELP.login(username, password);
         if(user != null) {
             if(user instanceof SchoolAdmin) {
                 SchoolHELPGUI.loggedInAdmin = (SchoolAdmin) user;
                 MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
                 menuSchoolAdministrator.setVisible(true);
+            }
+            else if(user instanceof Volunteer && loginVolunteer) {
+                
             }
             else {
                 RegisterSchool registerSchool = new RegisterSchool();
@@ -162,13 +171,18 @@ public class Login extends javax.swing.JFrame {
             }
             dispose();
         }
+        else if (loginVolunteer) {
+            RegisterAsVolunteer registerAsVolunteer = new RegisterAsVolunteer(username, password);
+            registerAsVolunteer.setVisible(true);
+        }
         else {
             JOptionPane.showMessageDialog(null, "Wrong Username/Password");
-        }
+        } 
     }//GEN-LAST:event_btnloginSchoolActionPerformed
 
     private void btnbackLoginSchoolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackLoginSchoolActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnbackLoginSchoolActionPerformed
 
     /**
@@ -201,7 +215,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login(loginVolunteer).setVisible(true);
             }
         });
     }

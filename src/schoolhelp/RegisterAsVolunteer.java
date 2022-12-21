@@ -4,6 +4,10 @@
  */
 package schoolhelp;
 
+import java.time.LocalDate;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -13,8 +17,16 @@ public class RegisterAsVolunteer extends javax.swing.JFrame {
     /**
      * Creates new form RegisterAsVolunteer
      */
-    public RegisterAsVolunteer() {
+    
+    private static String username;
+    private static String password;
+    
+    public RegisterAsVolunteer(String username, String password) {
         initComponents();
+        this.username = username;
+        this.password = password;
+        tfUsernameRAV.setText(username);
+        tfPasswordRAV.setText(password);
     }
 
     /**
@@ -95,6 +107,12 @@ public class RegisterAsVolunteer extends javax.swing.JFrame {
 
         jLabel1.setText("Select Time    :");
 
+        spnRAVDate.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+
+        spnRAVMonth.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+
+        spnRAVYear.setModel(new javax.swing.SpinnerNumberModel(1930, 1930, 2010, 1));
+
         btnRegisterRAV.setBackground(new java.awt.Color(53, 94, 94));
         btnRegisterRAV.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnRegisterRAV.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,7 +146,7 @@ public class RegisterAsVolunteer extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spnRAVDate, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                .addComponent(spnRAVDate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(spnRAVMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
@@ -215,6 +233,48 @@ public class RegisterAsVolunteer extends javax.swing.JFrame {
 
     private void btnRegisterRAVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterRAVActionPerformed
         // TODO add your handling code here:
+        String username = tfUsernameRAV.getText().trim();
+        String password = String.valueOf(tfPasswordRAV.getPassword()).trim();
+        String fullname = tfFullnameRAV.getText().trim();
+        String email = tfEmailRAV.getText().trim();
+        String phone = tfPhoneRAV.getText().trim();
+        String occupation = tfOccupationRAV.getText().trim();
+        int day = (int) spnRAVDate.getValue();
+        int month = (int) spnRAVMonth.getValue();
+        int year = (int) spnRAVYear.getValue();
+        LocalDate dateOfBirth = LocalDate.of(year, month, day);
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username must not empty");
+        }
+        else if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Password must not empty");
+        }
+        else if (fullname.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fullname must not empty");
+        }
+        else if (email.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Email must not empty");
+        }
+        else if (phone.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Phone must not empty");
+        }
+        else if (occupation.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Occupation must not empty");
+        }
+        else {
+            Volunteer volunteer = new Volunteer();
+            volunteer.setUsername(username);
+            volunteer.setPassword(password);
+            volunteer.setFullname(fullname);
+            volunteer.setEmail(email);
+            volunteer.setPhone(phone);
+            volunteer.setDateOfBirth(dateOfBirth);
+            
+            SchoolHELPGUI.schoolHELP.registerAsVolunteer(volunteer);
+            JOptionPane.showMessageDialog(null, "Register Success");
+          
+            dispose();
+        }
     }//GEN-LAST:event_btnRegisterRAVActionPerformed
 
     /**
@@ -247,7 +307,7 @@ public class RegisterAsVolunteer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisterAsVolunteer().setVisible(true);
+                new RegisterAsVolunteer(username, password).setVisible(true);
             }
         });
     }

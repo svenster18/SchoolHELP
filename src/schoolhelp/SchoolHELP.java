@@ -4,6 +4,8 @@
  */
 package schoolhelp;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -38,6 +40,20 @@ public class SchoolHELP {
         schoolAdmin.setStaffID("3204281806000002");
         schoolAdmin.setPosition("IT Admin");
         registerSchool(school, schoolAdmin);
+        
+        ResourceRequest resourceRequest = new ResourceRequest();
+        resourceRequest.setResourceType("Mobile Device");
+        resourceRequest.setDescription("Need smartphone");
+        resourceRequest.setNumRequired(20);
+        submitRequest(resourceRequest, school);
+        
+        TutorialRequest tutorialRequest = new TutorialRequest();
+        tutorialRequest.setDescription("Need Math Teacher");
+        tutorialRequest.setProposedDate(LocalDate.now());
+        tutorialRequest.setProposedTime(LocalTime.now());
+        tutorialRequest.setStudentLevel("8th grade");
+        tutorialRequest.setNumStudents(50);
+        submitRequest(tutorialRequest, school);
     }
 
     public User login(String username, String password) {
@@ -88,6 +104,7 @@ public class SchoolHELP {
     public boolean submitRequest(Request request, School school) {
         requestId++;
         request.setRequestID(requestId);
+        request.setSchool(school);
         return this.schools.stream().filter(s -> s.getSchoolID() == school.getSchoolID()).findFirst().get().getRequests().add(request);
     }
 
@@ -115,7 +132,7 @@ public class SchoolHELP {
 
     public List<Request> findBySchool(String schoolName) {
         try {
-            School school = this.schools.stream().filter(s -> s.getSchoolName().equals(schoolName)).findAny().get();
+            School school = this.schools.stream().filter(s -> s.getSchoolName().toLowerCase().contains(schoolName)).findAny().get();
             return school.getRequests().stream().filter(r -> r.getRequestStatus().equals("NEW")).collect(Collectors.toList());
         } catch (NoSuchElementException e) {
             return null;
@@ -123,19 +140,36 @@ public class SchoolHELP {
     }
 
     public List<Request> findByCity(String city) {
-        try {
-            School school = this.schools.stream().filter(s -> s.getCity().equals(city)).findAny().get();
-            return school.getRequests().stream().filter(r -> r.getRequestStatus().equals("NEW")).collect(Collectors.toList());
-        } catch (NoSuchElementException e) {
-            return null;
-        }
+        LinkedList<Request> requests = new LinkedList<>();
+        this.schools.stream().filter(s -> s.getCity().toLowerCase().contains(city)).forEach(school -> {
+            try {
+                requests.addAll(school.getRequests().stream().filter(r -> r.getRequestStatus().equals("NEW")).collect(Collectors.toList()));
+            } catch (NoSuchElementException e) {
+                
+            }
+        });
+
+        return requests;
     }
 
     public List<Request> findByRequestDate(String requestDate) {
         LinkedList<Request> requests = new LinkedList<>();
         this.schools.stream().forEach(school -> {
             try {
-                requests.addAll(school.getRequests().stream().filter(r -> r.getRequestStatus().equals("NEW") && r.getRequestDate().toString().equals(requestDate)).collect(Collectors.toList()));
+                requests.addAll(school.getRequests().stream().filter(r -> r.getRequestStatus().equals("NEW") && r.getRequestDate().toString().toLowerCase().contains(requestDate)).collect(Collectors.toList()));
+            } catch (NoSuchElementException e) {
+                
+            }
+        });
+
+        return requests;
+    }
+    
+    public List<Request> findAllRequests() {
+        LinkedList<Request> requests = new LinkedList<>();
+        this.schools.stream().forEach(school -> {
+            try {
+                requests.addAll(school.getRequests().stream().collect(Collectors.toList()));
             } catch (NoSuchElementException e) {
                 
             }

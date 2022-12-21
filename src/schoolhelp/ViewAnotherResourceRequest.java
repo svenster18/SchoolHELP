@@ -13,8 +13,18 @@ public class ViewAnotherResourceRequest extends javax.swing.JFrame {
     /**
      * Creates new form ViewAnotherResourceRequest
      */
-    public ViewAnotherResourceRequest() {
+    private static ResourceRequest resourceRequest;
+    
+    public ViewAnotherResourceRequest(ResourceRequest resourceRequest) {
         initComponents();
+        this.resourceRequest = resourceRequest;
+        init();
+    }
+    
+    private void init() {
+        jLabel1.setText(resourceRequest.getDescription());
+        jLabel4.setText(resourceRequest.getResourceType());
+        jLabel9.setText(String.valueOf(resourceRequest.getNumRequired()));
     }
 
     /**
@@ -36,7 +46,7 @@ public class ViewAnotherResourceRequest extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(53, 94, 94));
@@ -167,7 +177,7 @@ public class ViewAnotherResourceRequest extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewAnotherResourceRequest().setVisible(true);
+                new ViewAnotherResourceRequest(resourceRequest).setVisible(true);
             }
         });
     }

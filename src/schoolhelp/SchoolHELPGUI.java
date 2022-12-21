@@ -12,6 +12,7 @@ public class SchoolHELPGUI {
     
     public static SchoolHELP schoolHELP = new SchoolHELP();
     public static SchoolAdmin loggedInAdmin = null;
+    public static Volunteer loggedInVolunteer = null;
     
     public static void main(String[] args) {
         schoolHELP.init();

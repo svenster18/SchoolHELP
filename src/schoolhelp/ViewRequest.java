@@ -4,6 +4,11 @@
  */
 package schoolhelp;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author risak
@@ -13,10 +18,29 @@ public class ViewRequest extends javax.swing.JFrame {
     /**
      * Creates new form ViewRequest
      */
+    
+    List<Request> listRequest;
+    
     public ViewRequest() {
         initComponents();
+        bgFilter.add(jRadioButton1);
+        bgFilter.add(jRadioButton2);
+        bgFilter.add(jRadioButton3);
     }
-
+    
+    private void refresh() {
+        String[] columns = new String[] {"Request Date", "Description", "School Name", "City"};
+        Object[][] data = new Object[listRequest.size()][columns.length];
+        for(int i = 0; i < listRequest.size(); i++) {
+            data[i][0] = listRequest.get(i).getRequestDate();
+            data[i][1] = listRequest.get(i).getDescription();
+            data[i][2] = listRequest.get(i).getSchool().getSchoolName();
+            data[i][3] = listRequest.get(i).getSchool().getCity();
+        }
+        DefaultTableModel model = new DefaultTableModel(data, columns);
+        jTable1.setModel(model);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +50,7 @@ public class ViewRequest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgFilter = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnLogoutAccount = new javax.swing.JButton();
@@ -37,7 +62,7 @@ public class ViewRequest extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(53, 94, 94));
@@ -57,6 +82,7 @@ public class ViewRequest extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Request by             :");
 
+        jRadioButton1.setSelected(true);
         jRadioButton1.setText("School");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +110,11 @@ public class ViewRequest extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,6 +127,11 @@ public class ViewRequest extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -165,19 +201,104 @@ public class ViewRequest extends javax.swing.JFrame {
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
+        String search = jTextField1.getText().trim().toLowerCase();
+        if(jRadioButton1.isSelected()) {
+            listRequest = SchoolHELPGUI.schoolHELP.findBySchool(search);
+        }
+        else if(jRadioButton2.isSelected()) {
+            listRequest = SchoolHELPGUI.schoolHELP.findByCity(search);
+        } 
+        else {
+            listRequest = SchoolHELPGUI.schoolHELP.findByRequestDate(search);
+        }
+        if(listRequest != null) {
+            refresh();
+        }
+        else {
+            jTable1.removeAll();
+        }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
+        String search = jTextField1.getText().trim().toLowerCase();
+        if(jRadioButton1.isSelected()) {
+            listRequest = SchoolHELPGUI.schoolHELP.findBySchool(search);
+            
+        }
+        else if(jRadioButton2.isSelected()) {
+            listRequest = SchoolHELPGUI.schoolHELP.findByCity(search);
+        } 
+        else {
+            listRequest = SchoolHELPGUI.schoolHELP.findByRequestDate(search);
+        }
+        if(listRequest != null) {
+            refresh();
+        }
+        else {
+            jTable1.removeAll();
+        }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         // TODO add your handling code here:
+        String search = jTextField1.getText().trim().toLowerCase();
+        if(jRadioButton1.isSelected()) {
+            listRequest = SchoolHELPGUI.schoolHELP.findBySchool(search);
+        }
+        else if(jRadioButton2.isSelected()) {
+            listRequest = SchoolHELPGUI.schoolHELP.findByCity(search);
+        } 
+        else {
+            listRequest = SchoolHELPGUI.schoolHELP.findByRequestDate(search);
+        }
+        if(listRequest != null) {
+            refresh();
+        }
+        else {
+            jTable1.removeAll();
+        }
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        String search = jTextField1.getText().trim().toLowerCase();
+        if(jRadioButton1.isSelected()) {
+            listRequest = SchoolHELPGUI.schoolHELP.findBySchool(search);
+        }
+        else if(jRadioButton2.isSelected()) {
+            listRequest = SchoolHELPGUI.schoolHELP.findByCity(search);
+        } 
+        else {
+            listRequest = SchoolHELPGUI.schoolHELP.findByRequestDate(search);
+        }
+        if(listRequest != null) {
+            refresh();
+        }
+        else {
+            jTable1.removeAll();
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int row = jTable1.rowAtPoint(evt.getPoint());
+        Request request = listRequest.get(row);
+        if(request instanceof TutorialRequest) {
+            TutorialRequest tutorialRequest = (TutorialRequest) request;
+            ViewAnotherTutorialRequest viewAnotherTutorialRequest = new ViewAnotherTutorialRequest(tutorialRequest);
+            viewAnotherTutorialRequest.setVisible(true);
+        }
+        else {
+            ResourceRequest resourceRequest = (ResourceRequest) request;
+            ViewAnotherResourceRequest viewAnotherResourceRequest = new ViewAnotherResourceRequest(resourceRequest);
+            viewAnotherResourceRequest.setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -215,6 +336,7 @@ public class ViewRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgFilter;
     private javax.swing.JButton btnLogoutAccount;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
