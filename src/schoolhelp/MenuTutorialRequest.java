@@ -4,6 +4,12 @@
  */
 package schoolhelp;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -37,7 +43,6 @@ public class MenuTutorialRequest extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         spnNES = new javax.swing.JSpinner();
         btnSubmitTutorialRequest = new javax.swing.JButton();
-        btnAnotherTutorialRequest1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +68,8 @@ public class MenuTutorialRequest extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Number of Expected Student                 :");
 
+        spnNES.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         btnSubmitTutorialRequest.setBackground(new java.awt.Color(53, 94, 94));
         btnSubmitTutorialRequest.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnSubmitTutorialRequest.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,16 +77,6 @@ public class MenuTutorialRequest extends javax.swing.JFrame {
         btnSubmitTutorialRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitTutorialRequestActionPerformed(evt);
-            }
-        });
-
-        btnAnotherTutorialRequest1.setBackground(new java.awt.Color(53, 94, 94));
-        btnAnotherTutorialRequest1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        btnAnotherTutorialRequest1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAnotherTutorialRequest1.setText("View Another Request");
-        btnAnotherTutorialRequest1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnotherTutorialRequest1ActionPerformed(evt);
             }
         });
 
@@ -112,10 +109,7 @@ public class MenuTutorialRequest extends javax.swing.JFrame {
                         .addGap(273, 273, 273))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSubmitTutorialRequest)
-                        .addGap(550, 550, 550))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAnotherTutorialRequest1)
-                        .addGap(472, 472, 472))))
+                        .addGap(550, 550, 550))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,9 +134,7 @@ public class MenuTutorialRequest extends javax.swing.JFrame {
                     .addComponent(spnNES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61)
                 .addComponent(btnSubmitTutorialRequest)
-                .addGap(27, 27, 27)
-                .addComponent(btnAnotherTutorialRequest1)
-                .addGap(185, 185, 185))
+                .addGap(240, 240, 240))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,11 +158,37 @@ public class MenuTutorialRequest extends javax.swing.JFrame {
 
     private void btnSubmitTutorialRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitTutorialRequestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSubmitTutorialRequestActionPerformed
+        String description = taDescription.getText().trim();
+        Date date = (Date) spnPDDate.getValue();
+        LocalDate proposedDate = LocalDate.of(date.getYear(), date.getMonth(), date.getDate());
+        LocalTime proposedTime = LocalTime.of(date.getHours(), date.getMinutes());
+        String studentLevel = tfStudentLevel.getText().trim();
+        int numStudents = (int) spnNES.getValue();
 
-    private void btnAnotherTutorialRequest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnotherTutorialRequest1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAnotherTutorialRequest1ActionPerformed
+        if (description.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Description must not empty");
+        } else if (date.toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Proposed Date and Time must not empty");
+        } else if (studentLevel.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Student Level must not empty");
+        } else {
+            TutorialRequest tutorialRequest = new TutorialRequest();
+            tutorialRequest.setDescription(description);
+            tutorialRequest.setProposedDate(proposedDate);
+            tutorialRequest.setProposedTime(proposedTime);
+            tutorialRequest.setStudentLevel(studentLevel);
+            tutorialRequest.setNumStudents(numStudents);
+            SchoolHELPGUI.schoolHELP.submitRequest(tutorialRequest, SchoolHELPGUI.loggedInAdmin.getSchool());
+            int input = JOptionPane.showConfirmDialog(null, "Do you want to submit another request?", "Submit Success", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (input == 0) {
+                dispose();
+            } else {
+                MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
+                menuSchoolAdministrator.setVisible(true);
+                dispose();
+            }
+        }
+    }//GEN-LAST:event_btnSubmitTutorialRequestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,7 +226,6 @@ public class MenuTutorialRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnotherTutorialRequest1;
     private javax.swing.JButton btnSubmitTutorialRequest;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

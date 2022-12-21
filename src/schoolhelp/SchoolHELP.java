@@ -14,6 +14,7 @@ public class SchoolHELP {
     private final LinkedList<School> schools = new LinkedList<>();
     private final LinkedList<User> users = new LinkedList<>();
     private int id = 0;
+    private int requestId = 0;
 
     public void init() {
         User schoolHELPAdmin = new User();
@@ -85,6 +86,8 @@ public class SchoolHELP {
     }
 
     public boolean submitRequest(Request request, School school) {
+        requestId++;
+        request.setRequestID(requestId);
         return this.schools.stream().filter(s -> s.getSchoolID() == school.getSchoolID()).findFirst().get().getRequests().add(request);
     }
 

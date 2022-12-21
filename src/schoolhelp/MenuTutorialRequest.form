@@ -78,10 +78,6 @@
                           <Component id="btnSubmitTutorialRequest" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="550" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnAnotherTutorialRequest1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="472" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
           </Group>
@@ -112,9 +108,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Component id="btnSubmitTutorialRequest" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="btnAnotherTutorialRequest1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -179,6 +173,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spnNES">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnSubmitTutorialRequest">
           <Properties>
@@ -195,23 +194,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitTutorialRequestActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnAnotherTutorialRequest1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5e" green="5e" red="35" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Inter" size="18" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="View Another Request"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnotherTutorialRequest1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
