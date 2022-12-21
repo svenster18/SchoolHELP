@@ -170,6 +170,7 @@ public class ViewAnotherTutorialRequest extends javax.swing.JFrame {
     private void btnSubmitOfferVTRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitOfferVTRActionPerformed
         // TODO add your handling code here:
         JOptionPane.showInputDialog("Remarks");
+        JOptionPane.showMessageDialog(null, "Submit Success", "Submit Offer", JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }//GEN-LAST:event_btnSubmitOfferVTRActionPerformed
 

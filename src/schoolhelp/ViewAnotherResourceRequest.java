@@ -4,6 +4,8 @@
  */
 package schoolhelp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -145,6 +147,9 @@ public class ViewAnotherResourceRequest extends javax.swing.JFrame {
 
     private void btnSubmitOfferVRRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitOfferVRRActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showInputDialog("Remarks");
+        JOptionPane.showMessageDialog(null, "Submit Success", "Submit Offer", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
     }//GEN-LAST:event_btnSubmitOfferVRRActionPerformed
 
     /**
