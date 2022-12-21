@@ -4,6 +4,9 @@
  */
 package schoolhelp;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author risak
@@ -13,8 +16,26 @@ public class ViewRequestAdministrator extends javax.swing.JFrame {
     /**
      * Creates new form ViewRequestAdministrator
      */
+    
+    List<Request> listRequest;
+    
     public ViewRequestAdministrator() {
         initComponents();
+        listRequest = SchoolHELPGUI.schoolHELP.findRequests(SchoolHELPGUI.loggedInAdmin.getSchool().getSchoolName());
+        refresh();
+    }
+    
+    private void refresh() {
+        String[] columns = new String[] {"Request Date", "Description", "School Name", "City"};
+        Object[][] data = new Object[listRequest.size()][columns.length];
+        for(int i = 0; i < listRequest.size(); i++) {
+            data[i][0] = listRequest.get(i).getRequestDate();
+            data[i][1] = listRequest.get(i).getDescription();
+            data[i][2] = listRequest.get(i).getSchool().getSchoolName();
+            data[i][3] = listRequest.get(i).getSchool().getCity();
+        }
+        DefaultTableModel model = new DefaultTableModel(data, columns);
+        jTable1.setModel(model);
     }
 
     /**
@@ -31,7 +52,7 @@ public class ViewRequestAdministrator extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(53, 94, 94));
@@ -48,6 +69,11 @@ public class ViewRequestAdministrator extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -87,6 +113,14 @@ public class ViewRequestAdministrator extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int row = jTable1.rowAtPoint(evt.getPoint());
+        Request request = listRequest.get(row);
+        RequestDetails requestDetails = new RequestDetails(request);
+        requestDetails.setVisible(true);
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

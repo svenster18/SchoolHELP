@@ -205,6 +205,8 @@ public class MenuSchoolAdministrator extends javax.swing.JFrame {
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
+        ViewRequestAdministrator viewRequestAdministrator = new ViewRequestAdministrator();
+        viewRequestAdministrator.setVisible(true);
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
     private void btnLogoutAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutAccountActionPerformed

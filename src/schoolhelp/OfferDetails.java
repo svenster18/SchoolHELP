@@ -4,6 +4,10 @@
  */
 package schoolhelp;
 
+import java.time.LocalDate;
+import java.time.Period;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -13,8 +17,20 @@ public class OfferDetails extends javax.swing.JFrame {
     /**
      * Creates new form OfferDetails
      */
-    public OfferDetails() {
+    private static Offer offer;
+
+    public OfferDetails(Offer offer) {
         initComponents();
+        this.offer = offer;
+        init();
+    }
+
+    private void init() {
+        jLabel3.setText(offer.getOfferDate().toString());
+        jLabel5.setText(offer.getRemarks());
+        jLabel12.setText(offer.getVolunteer().getFullname());
+        jLabel11.setText(String.valueOf(Period.between(offer.getVolunteer().getDateOfBirth(), LocalDate.now()).getYears()));
+        jLabel10.setText(offer.getVolunteer().getOccupation());
     }
 
     /**
@@ -167,6 +183,24 @@ public class OfferDetails extends javax.swing.JFrame {
 
     private void btnAcceptOfferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptOfferActionPerformed
         // TODO add your handling code here:
+        SchoolHELPGUI.schoolHELP.acceptOffer(offer);
+        int input = JOptionPane.showConfirmDialog(null, "Do you want to view another offer?", "Accept Offer Success", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == 0) {
+            dispose();
+        } else {
+            int close = JOptionPane.showConfirmDialog(null, "Do you want to close this request?", "Accept Offer Success", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (close == 0) {
+                SchoolHELPGUI.schoolHELP.closeRequest(offer.getRequest());
+                dispose();
+            } else {
+                MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
+                menuSchoolAdministrator.setVisible(true);
+                dispose();
+            }
+            ViewRequestAdministrator viewRequestAdministrator = new ViewRequestAdministrator();
+            viewRequestAdministrator.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_btnAcceptOfferActionPerformed
 
     /**
@@ -199,7 +233,7 @@ public class OfferDetails extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OfferDetails().setVisible(true);
+                new OfferDetails(offer).setVisible(true);
             }
         });
     }

@@ -59,7 +59,7 @@ public class RegisterAsVolunteer extends javax.swing.JFrame {
         spnRAVYear = new javax.swing.JSpinner();
         btnRegisterRAV = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(53, 94, 94));

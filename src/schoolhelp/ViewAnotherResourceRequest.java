@@ -147,9 +147,8 @@ public class ViewAnotherResourceRequest extends javax.swing.JFrame {
 
     private void btnSubmitOfferVRRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitOfferVRRActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showInputDialog("Remarks");
-        JOptionPane.showMessageDialog(null, "Submit Success", "Submit Offer", JOptionPane.INFORMATION_MESSAGE);
-        dispose();
+        Login login = new Login(resourceRequest);
+        login.setVisible(true);
     }//GEN-LAST:event_btnSubmitOfferVRRActionPerformed
 
     /**

@@ -16,11 +16,11 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     
-    private static boolean loginVolunteer;
+    private static Request request;
     
-    public Login(boolean loginVolunteer) {
+    public Login(Request request) {
         initComponents();
-        this.loginVolunteer = loginVolunteer;
+        this.request = request;
     }
 
     /**
@@ -157,21 +157,32 @@ public class Login extends javax.swing.JFrame {
         String password = String.valueOf(pfPassword.getPassword()).trim();
         User user = SchoolHELPGUI.schoolHELP.login(username, password);
         if(user != null) {
-            if(user instanceof SchoolAdmin) {
+            if(user instanceof SchoolAdmin && request == null) {
                 SchoolHELPGUI.loggedInAdmin = (SchoolAdmin) user;
                 MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
                 menuSchoolAdministrator.setVisible(true);
             }
-            else if(user instanceof Volunteer && loginVolunteer) {
-                
+            else if(user instanceof Volunteer && request != null) {
+                SchoolHELPGUI.loggedInVolunteer = (Volunteer) user;
+                String remarks = JOptionPane.showInputDialog("Remarks");
+                Offer offer = new Offer();
+                offer.setRemarks(remarks);
+                offer.setRequest(request);
+                offer.setVolunteer(SchoolHELPGUI.loggedInVolunteer);
+                SchoolHELPGUI.schoolHELP.submitOffer(offer, request.getSchool().getSchoolName());
+                JOptionPane.showMessageDialog(null, "Submit Success", "Submit Offer", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
             }
-            else {
+            else if (request == null) {
                 RegisterSchool registerSchool = new RegisterSchool();
                 registerSchool.setVisible(true);
             }
+            else {
+                JOptionPane.showMessageDialog(null, "School Admin cannot submit offer");
+            }
             dispose();
         }
-        else if (loginVolunteer) {
+        else if (request != null) {
             RegisterAsVolunteer registerAsVolunteer = new RegisterAsVolunteer(username, password);
             registerAsVolunteer.setVisible(true);
         }
@@ -215,7 +226,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login(loginVolunteer).setVisible(true);
+                new Login(request).setVisible(true);
             }
         });
     }

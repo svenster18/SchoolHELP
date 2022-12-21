@@ -6,6 +6,7 @@ package schoolhelp;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Month;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -40,6 +41,16 @@ public class SchoolHELP {
         schoolAdmin.setStaffID("3204281806000002");
         schoolAdmin.setPosition("IT Admin");
         registerSchool(school, schoolAdmin);
+        
+        Volunteer volunteer = new Volunteer();
+        volunteer.setUsername("risa");
+        volunteer.setPassword("r154");
+        volunteer.setFullname("Risa Kania Putri");
+        volunteer.setEmail("risa.k.putri.7@gmail.com");
+        volunteer.setPhone("088970844383");
+        volunteer.setDateOfBirth(LocalDate.of(2001, Month.SEPTEMBER, 18));
+        volunteer.setOccupation("Student");
+        registerAsVolunteer(volunteer);
         
         ResourceRequest resourceRequest = new ResourceRequest();
         resourceRequest.setResourceType("Mobile Device");

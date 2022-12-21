@@ -221,7 +221,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        Login login = new Login(false);
+        Login login = new Login(null);
         login.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
