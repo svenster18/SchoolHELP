@@ -91,7 +91,7 @@ public class RegisterAsVolunteer extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Date of Brith");
+        jLabel9.setText("Date of Birth");
 
         jLabel1.setText("Select Time    :");
 
