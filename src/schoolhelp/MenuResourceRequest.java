@@ -4,6 +4,8 @@
  */
 package schoolhelp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -35,7 +37,6 @@ public class MenuResourceRequest extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         spnNumberRequired = new javax.swing.JSpinner();
         btnSubmitTutorialRequest = new javax.swing.JButton();
-        btnAnotherResourceRequest1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +52,7 @@ public class MenuResourceRequest extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Description");
 
-        cbRRResourceType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbRRResourceType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mobile Device", "Personal Computer", "Networking Equipment" }));
         cbRRResourceType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbRRResourceTypeActionPerformed(evt);
@@ -62,6 +63,8 @@ public class MenuResourceRequest extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Number Required                             :");
 
+        spnNumberRequired.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         btnSubmitTutorialRequest.setBackground(new java.awt.Color(53, 94, 94));
         btnSubmitTutorialRequest.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnSubmitTutorialRequest.setForeground(new java.awt.Color(255, 255, 255));
@@ -69,16 +72,6 @@ public class MenuResourceRequest extends javax.swing.JFrame {
         btnSubmitTutorialRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitTutorialRequestActionPerformed(evt);
-            }
-        });
-
-        btnAnotherResourceRequest1.setBackground(new java.awt.Color(53, 94, 94));
-        btnAnotherResourceRequest1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        btnAnotherResourceRequest1.setForeground(new java.awt.Color(255, 255, 255));
-        btnAnotherResourceRequest1.setText("View Another Request");
-        btnAnotherResourceRequest1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnotherResourceRequest1ActionPerformed(evt);
             }
         });
 
@@ -91,7 +84,7 @@ public class MenuResourceRequest extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(452, Short.MAX_VALUE)
+                .addContainerGap(424, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -109,10 +102,6 @@ public class MenuResourceRequest extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSubmitTutorialRequest)
                         .addGap(612, 612, 612))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAnotherResourceRequest1)
-                .addGap(536, 536, 536))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,9 +122,7 @@ public class MenuResourceRequest extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(58, 58, 58)
                 .addComponent(btnSubmitTutorialRequest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAnotherResourceRequest1)
-                .addGap(224, 224, 224))
+                .addGap(264, 264, 264))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,11 +145,27 @@ public class MenuResourceRequest extends javax.swing.JFrame {
 
     private void btnSubmitTutorialRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitTutorialRequestActionPerformed
         // TODO add your handling code here:
+        String description = taRRDescription.getText().trim();
+        String resourceType = cbRRResourceType.getSelectedItem().toString();
+        int numberRequired = (int) spnNumberRequired.getValue();
+        if (description.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Description must not empty");
+        } else {
+            ResourceRequest resourceRequest = new ResourceRequest();
+            resourceRequest.setDescription(description);
+            resourceRequest.setResourceType(resourceType);
+            resourceRequest.setNumRequired(numberRequired);
+            SchoolHELPGUI.schoolHELP.submitRequest(resourceRequest, SchoolHELPGUI.loggedInAdmin.getSchool());
+            int input = JOptionPane.showConfirmDialog(null, "Do you want to submit another request?", "Submit Success", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (input == 0) {
+                dispose();
+            } else {
+                MenuSchoolAdministrator menuSchoolAdministrator = new MenuSchoolAdministrator();
+                menuSchoolAdministrator.setVisible(true);
+                dispose();
+            }
+        }
     }//GEN-LAST:event_btnSubmitTutorialRequestActionPerformed
-
-    private void btnAnotherResourceRequest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnotherResourceRequest1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAnotherResourceRequest1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,7 +203,6 @@ public class MenuResourceRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnotherResourceRequest1;
     private javax.swing.JButton btnSubmitTutorialRequest;
     private javax.swing.JComboBox<String> cbRRResourceType;
     private javax.swing.JLabel jLabel2;
