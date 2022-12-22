@@ -4,18 +4,28 @@
  */
 package schoolhelp;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 
 public class SchoolHELP {
 
     private final LinkedList<School> schools = new LinkedList<>();
-    private final LinkedList<User> users = new LinkedList<>();
+    private LinkedList<User> users = new LinkedList<>();
     private int id = 0;
     private int requestId = 0;
 
@@ -176,6 +186,11 @@ public class SchoolHELP {
         return requests;
     }
     
+    public List<User> findAllUsers() {
+        Collections.sort(users, (u1, u2) -> u1.getFullname().compareTo(u2.getFullname()));
+        return users;
+    }
+    
     public List<Request> findAllRequests() {
         LinkedList<Request> requests = new LinkedList<>();
         this.schools.stream().forEach(school -> {
@@ -185,6 +200,7 @@ public class SchoolHELP {
                 
             }
         });
+        Collections.sort(requests, (r1, r2) -> r1.getSchool().getSchoolName().compareTo(r2.getSchool().getSchoolName()));
 
         return requests;
     }
@@ -192,5 +208,29 @@ public class SchoolHELP {
     public void submitOffer(Offer offer, String schoolName) {
         School school = this.schools.stream().filter(s -> s.getSchoolName().equals(schoolName)).findAny().get();
         school.getRequests().stream().filter(r -> r.getRequestID() == offer.getRequest().getRequestID()).findFirst().get().getOffers().add(offer);
+    }
+    
+    public void save() {
+        try {
+            FileOutputStream fout = new FileOutputStream("users.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fout);
+            out.writeObject(users);
+            out.flush();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+    
+    public void load() {
+        try {
+            FileInputStream fileIn = new FileInputStream("users.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            users = (LinkedList<User>) in.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

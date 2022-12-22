@@ -4,6 +4,9 @@
  */
 package schoolhelp;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author risak
@@ -13,8 +16,27 @@ public class ViewAllRequest extends javax.swing.JFrame {
     /**
      * Creates new form ViewAllRequest
      */
+    
+    private List<Request> listRequest;
+    
     public ViewAllRequest() {
         initComponents();
+        init();
+    }
+    
+    private void init() {
+        listRequest = SchoolHELPGUI.schoolHELP.findAllRequests();
+        String[] columns = new String[] {"Request ID", "Request Status","Request Date", "Description", "School Name"};
+        Object[][] data = new Object[listRequest.size()][columns.length];
+        for(int i = 0; i < listRequest.size(); i++) {
+            data[i][0] = listRequest.get(i).getRequestID();
+            data[i][1] = listRequest.get(i).getRequestStatus();
+            data[i][2] = listRequest.get(i).getRequestDate();
+            data[i][3] = listRequest.get(i).getDescription();
+            data[i][4] = listRequest.get(i).getSchool().getSchoolName();
+        }
+        DefaultTableModel model = new DefaultTableModel(data, columns);
+        TableRequest.setModel(model);
     }
 
     /**
@@ -28,25 +50,14 @@ public class ViewAllRequest extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnBackRequest = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableRequest = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(53, 94, 94));
         jLabel2.setText("Request");
-
-        btnBackRequest.setBackground(new java.awt.Color(53, 94, 94));
-        btnBackRequest.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        btnBackRequest.setForeground(new java.awt.Color(255, 255, 255));
-        btnBackRequest.setText("Back");
-        btnBackRequest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackRequestActionPerformed(evt);
-            }
-        });
 
         TableRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,19 +82,14 @@ public class ViewAllRequest extends javax.swing.JFrame {
                         .addGap(561, 561, 561)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(442, 442, 442)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(btnBackRequest)))
-                .addContainerGap(470, Short.MAX_VALUE))
+                        .addGap(290, 290, 290)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(btnBackRequest)
-                .addGap(2, 2, 2)
+                .addGap(87, 87, 87)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,14 +109,6 @@ public class ViewAllRequest extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackRequestActionPerformed
-        // TODO add your handling code here:
-        SchoolHELPGUI.loggedInAdmin = null;
-        MainMenu mainMenu = new MainMenu();
-        mainMenu.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnBackRequestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,7 +147,6 @@ public class ViewAllRequest extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableRequest;
-    private javax.swing.JButton btnBackRequest;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

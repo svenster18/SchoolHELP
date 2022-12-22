@@ -4,6 +4,9 @@
  */
 package schoolhelp;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author risak
@@ -13,8 +16,25 @@ public class ViewAllUsers extends javax.swing.JFrame {
     /**
      * Creates new form ViewAllUsers
      */
+    private List<User> listUser;
+    
     public ViewAllUsers() {
         initComponents();
+        init();
+    }
+    
+    private void init() {
+        listUser = SchoolHELPGUI.schoolHELP.findAllUsers();
+        String[] columns = new String[] {"Username", "Fullname","Email", "Phone"};
+        Object[][] data = new Object[listUser.size()][columns.length];
+        for(int i = 0; i < listUser.size(); i++) {
+            data[i][0] = listUser.get(i).getUsername();
+            data[i][1] = listUser.get(i).getFullname();
+            data[i][2] = listUser.get(i).getEmail();
+            data[i][3] = listUser.get(i).getPhone();
+        }
+        DefaultTableModel model = new DefaultTableModel(data, columns);
+        TableUsers.setModel(model);
     }
 
     /**
@@ -28,25 +48,14 @@ public class ViewAllUsers extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnBackUsers = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableUsers = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Inter", 1, 44)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(53, 94, 94));
         jLabel2.setText("Users");
-
-        btnBackUsers.setBackground(new java.awt.Color(53, 94, 94));
-        btnBackUsers.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        btnBackUsers.setForeground(new java.awt.Color(255, 255, 255));
-        btnBackUsers.setText("Back");
-        btnBackUsers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackUsersActionPerformed(evt);
-            }
-        });
 
         TableUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,28 +77,21 @@ public class ViewAllUsers extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(btnBackUsers)
-                        .addGap(444, 444, 444)
+                        .addGap(557, 557, 557)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(433, 433, 433)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(479, Short.MAX_VALUE))
+                        .addGap(191, 191, 191)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnBackUsers)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178))))
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,14 +107,6 @@ public class ViewAllUsers extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackUsersActionPerformed
-        // TODO add your handling code here:
-        SchoolHELPGUI.loggedInAdmin = null;
-        MainMenu mainMenu = new MainMenu();
-        mainMenu.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnBackUsersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,7 +145,6 @@ public class ViewAllUsers extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableUsers;
-    private javax.swing.JButton btnBackUsers;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -4,9 +4,10 @@
  */
 package schoolhelp;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Offer {
+public class Offer implements Serializable {
     private LocalDate offerDate = LocalDate.now();
     private String remarks;
     private String offerStatus = "PENDING";

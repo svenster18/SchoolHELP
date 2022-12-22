@@ -4,11 +4,12 @@
  */
 package schoolhelp;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.LinkedList;
 
-public class Request {
+public class Request implements Serializable {
     private int requestID;
     private LocalDate requestDate = LocalDate.now();
     private String requestStatus = "NEW";

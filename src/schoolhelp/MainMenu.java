@@ -4,6 +4,8 @@
  */
 package schoolhelp;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author risak
@@ -42,6 +44,8 @@ public class MainMenu extends javax.swing.JFrame {
         btnViewAllRequest = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         btnViewAllUsers = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnLoad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 51));
@@ -130,6 +134,31 @@ public class MainMenu extends javax.swing.JFrame {
         btnViewAllUsers.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnViewAllUsers.setForeground(new java.awt.Color(255, 255, 255));
         btnViewAllUsers.setText("SELECT");
+        btnViewAllUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllUsersActionPerformed(evt);
+            }
+        });
+
+        btnSave.setBackground(new java.awt.Color(53, 94, 94));
+        btnSave.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("SAVE");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnLoad.setBackground(new java.awt.Color(53, 94, 94));
+        btnLoad.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        btnLoad.setForeground(new java.awt.Color(255, 255, 255));
+        btnLoad.setText("LOAD");
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,8 +193,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGap(127, 127, 127)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(431, 431, 431)
                         .addComponent(btnViewAllUsers)
@@ -175,14 +203,27 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGap(358, 358, 358)
                         .addComponent(jLabel9)
                         .addGap(180, 180, 180)
-                        .addComponent(jLabel10)))
+                        .addComponent(jLabel10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(232, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(btnSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLoad)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(lblSchoolHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnLoad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSchoolHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,7 +240,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(btnLogin)
                     .addComponent(btnRAVolunteer)
                     .addComponent(btnViewRequest))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
@@ -227,6 +268,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnViewAllRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllRequestActionPerformed
         // TODO add your handling code here:
+        ViewAllRequest viewAllRequest = new ViewAllRequest();
+        viewAllRequest.setVisible(true);
     }//GEN-LAST:event_btnViewAllRequestActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
@@ -234,6 +277,24 @@ public class MainMenu extends javax.swing.JFrame {
         ViewRequest viewRequest = new ViewRequest();
         viewRequest.setVisible(true);
     }//GEN-LAST:event_btnViewRequestActionPerformed
+
+    private void btnViewAllUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllUsersActionPerformed
+        // TODO add your handling code here:
+        ViewAllUsers viewAllUsers = new ViewAllUsers();
+        viewAllUsers.setVisible(true);
+    }//GEN-LAST:event_btnViewAllUsersActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        SchoolHELPGUI.schoolHELP.save();
+        JOptionPane.showMessageDialog(null, "Save Success");
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+        // TODO add your handling code here:
+        SchoolHELPGUI.schoolHELP.load();
+        JOptionPane.showMessageDialog(null, "Load Success");
+    }//GEN-LAST:event_btnLoadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,8 +332,10 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRAVolunteer;
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnViewAllRequest;
     private javax.swing.JButton btnViewAllUsers;
     private javax.swing.JButton btnViewRequest;

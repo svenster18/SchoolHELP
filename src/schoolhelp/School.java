@@ -4,13 +4,14 @@
  */
 package schoolhelp;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  *
  * @author risak
  */
-public class School {
+public class School implements Serializable {
     private int schoolID;
     private String schoolName;
     private String address;
