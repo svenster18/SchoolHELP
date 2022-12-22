@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 
 public class SchoolHELP {
 
-    private final LinkedList<School> schools = new LinkedList<>();
+    private LinkedList<School> schools = new LinkedList<>();
     private LinkedList<User> users = new LinkedList<>();
     private int id = 0;
     private int requestId = 0;
@@ -37,44 +37,6 @@ public class SchoolHELP {
         schoolHELPAdmin.setEmail("cliff@email.com");
         schoolHELPAdmin.setPhone("012718273");
         users.add(schoolHELPAdmin);
-        School school = new School();
-        school.setSchoolName("SMAN 1 Rancaekek");
-        school.setAddress("Jl. Walini");
-        school.setCity("Bandung");
-        
-        SchoolAdmin schoolAdmin = new SchoolAdmin();
-        schoolAdmin.setUsername("rizki");
-        schoolAdmin.setPassword("r12k14n4k50l3h");
-        schoolAdmin.setFullname("Mohamad Rizki");
-        schoolAdmin.setEmail("mohamadrizki8@gmail.com");
-        schoolAdmin.setPhone("081316560190");
-        schoolAdmin.setStaffID("3204281806000002");
-        schoolAdmin.setPosition("IT Admin");
-        registerSchool(school, schoolAdmin);
-        
-        Volunteer volunteer = new Volunteer();
-        volunteer.setUsername("risa");
-        volunteer.setPassword("r154");
-        volunteer.setFullname("Risa Kania Putri");
-        volunteer.setEmail("risa.k.putri.7@gmail.com");
-        volunteer.setPhone("088970844383");
-        volunteer.setDateOfBirth(LocalDate.of(2001, Month.SEPTEMBER, 18));
-        volunteer.setOccupation("Student");
-        registerAsVolunteer(volunteer);
-        
-        ResourceRequest resourceRequest = new ResourceRequest();
-        resourceRequest.setResourceType("Mobile Device");
-        resourceRequest.setDescription("Need smartphone");
-        resourceRequest.setNumRequired(20);
-        submitRequest(resourceRequest, school);
-        
-        TutorialRequest tutorialRequest = new TutorialRequest();
-        tutorialRequest.setDescription("Need Math Teacher");
-        tutorialRequest.setProposedDate(LocalDate.now());
-        tutorialRequest.setProposedTime(LocalTime.now());
-        tutorialRequest.setStudentLevel("8th grade");
-        tutorialRequest.setNumStudents(50);
-        submitRequest(tutorialRequest, school);
     }
 
     public User login(String username, String password) {
@@ -216,6 +178,14 @@ public class SchoolHELP {
             ObjectOutputStream out = new ObjectOutputStream(fout);
             out.writeObject(users);
             out.flush();
+            out.close();
+            fout.close();
+            FileOutputStream foutSchool = new FileOutputStream("schools.txt");
+            ObjectOutputStream outSchool = new ObjectOutputStream(foutSchool);
+            outSchool.writeObject(schools);
+            outSchool.flush();
+            outSchool.close();
+            foutSchool.close();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
@@ -229,6 +199,13 @@ public class SchoolHELP {
             FileInputStream fileIn = new FileInputStream("users.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             users = (LinkedList<User>) in.readObject();
+            in.close();
+            fileIn.close();
+            FileInputStream fileInSchool = new FileInputStream("schools.txt");
+            ObjectInputStream inSchool = new ObjectInputStream(fileInSchool);
+            schools = (LinkedList<School>) inSchool.readObject();
+            inSchool.close();
+            fileInSchool.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

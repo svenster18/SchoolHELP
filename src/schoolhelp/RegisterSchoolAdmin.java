@@ -50,7 +50,7 @@ public class RegisterSchoolAdmin extends javax.swing.JFrame {
         pfPasswordSchoolAdmin = new javax.swing.JPasswordField();
         btnRegisterSchoolAdminSchoolAdmin = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 

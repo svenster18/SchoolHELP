@@ -197,6 +197,7 @@ public class ViewRequest extends javax.swing.JFrame {
 
     private void btnLogoutAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutAccountActionPerformed
         // TODO add your handling code here:
+        SchoolHELPGUI.loggedInVolunteer = null;
     }//GEN-LAST:event_btnLogoutAccountActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
